@@ -11,7 +11,6 @@ contract Lands {
         string contractHash;
     }
     struct landOwner{
-
         uint id; 
         address ownerAddress;
         string fullName ;
@@ -32,10 +31,10 @@ contract Lands {
     
     constructor() public {
         landsCounter = 0;
-        landsOwners[0]=landOwner(0,0xEA3b0d98bD22Fd7Ee69d4b527B018988D89c723B,"Ahmad Shaath");
-        landsOwners[1]=landOwner(1,0x198D90C1f9C1F8952B3BA90E86D9Ca2b22c1215f,"Abdul Mohsen ");
-        landsOwners[2]=landOwner(2,0xC60D950464286720f0EA220304a93080b96a4A59,"Manar Abu El khair ");
-        landsOwners[3]=landOwner(3,0x35bEBd9DCD066848B79365CEc726772F12310e91,"Rola Abdel Wahhab");
+        landsOwners[0]=landOwner(0,0xEb4E61F21c99015AB015D81B9eA06B9E66E3e907,"Ahmad Shaath");
+        landsOwners[1]=landOwner(1,0x63f9Da71407F3dfd337b645551a980d45E882742,"Abdul Mohsen ");
+        landsOwners[2]=landOwner(2,0x40837cf2f919Ad1E6Ce1c3340B7C2Fb1284495CC,"Manar Abu El khair ");
+        landsOwners[3]=landOwner(3,0x5F4f94e8733F81b0D62EB6dE672AAaC579b47840,"Rola Abdel Wahhab");
     }
 
   

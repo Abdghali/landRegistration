@@ -16,7 +16,7 @@ class App extends Component {
     accounts: null,
     contract: null,
     asset_html: '',
-    owners_html:''
+    owners_html: ''
   };
 
   componentDidMount = async () => {
@@ -26,6 +26,7 @@ class App extends Component {
 
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
+
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
@@ -107,10 +108,10 @@ class App extends Component {
 
 
   }
-  transferOwnerShip= async (event) => {
+  transferOwnerShip = async (event) => {
     const { accounts, contract } = this.state;
     console.log(this.state.owners);
-    await contract.methods.moveOwnerShip(this.state.owners,this.state.owners).send({from:accounts[0]});
+    await contract.methods.moveOwnerShip(accounts[0], this.state.owners).send({ from: accounts[0] });
 
 
   }
@@ -126,23 +127,25 @@ class App extends Component {
       + res[3] + '</td><td>'
       + res[4] + '</td><td><img src="https://ipfs.infura-ipfs.io/ipfs/'
       + res[5] + '"</td></tr>';
-      let ownerListHTML='';
+    let ownerListHTML = '';
     for (let i = 0; i < 4; i++) {
       const ownerList = await contract.methods.landsOwners(i).call();
       console.log(ownerList);
-      ownerListHTML=ownerListHTML+'<option value="'+ownerList[1]+'">'+ownerList[2]+'</option>'
+      ownerListHTML = ownerListHTML + '<option value="' + ownerList[1] + '">' + ownerList[2] + '</option>'
     }
-    this.setState({ owners_html:ownerListHTML,asset_html: assetHTML });
+    this.setState({ owners_html: ownerListHTML, asset_html: assetHTML });
 
 
 
   };
 
   render() {
+    
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
+      
       <div className="App">
         <div className="container">
           <div className="row">
@@ -211,7 +214,7 @@ class App extends Component {
 
               <label htmlFor="owners">Land Owners</label>
               <select className="form-control" name="owners" onChange={this.captureInputChange} >
-             {parse(this.state.owners_html)}
+                {parse(this.state.owners_html)}
               </select>
 
               <button className="btn btn-primary" onClick={this.transferOwnerShip}>TransferOwnership</button>
